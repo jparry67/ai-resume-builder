@@ -1,0 +1,116 @@
+# AI Resume Builder - Full Stack Project .gitignore
+
+# ===== FRONTEND (Angular) =====
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/tmp/
+frontend/out-tsc/
+frontend/bazel-out/
+frontend/npm-debug.log
+frontend/yarn-error.log
+frontend/.sass-cache/
+frontend/connect.lock
+frontend/coverage/
+frontend/libpeerconnection.log
+frontend/testem.log
+frontend/typings/
+
+# ===== BACKEND (Python/Flask) =====
+backend/.venv/
+backend/__pycache__/
+backend/*.pyc
+backend/*.pyo
+backend/*.pyd
+backend/.Python
+backend/env/
+backend/venv/
+backend/ENV/
+backend/env.bak/
+backend/venv.bak/
+backend/.pytest_cache/
+backend/.coverage
+backend/htmlcov/
+backend/.tox/
+backend/.nox/
+backend/.hypothesis/
+backend/.mypy_cache/
+backend/.dmypy.json
+backend/dmypy.json
+
+# ===== AWS/SERVERLESS =====
+backend/.serverless/
+backend/serverless-deployment-bucket/
+backend/.aws/
+
+# ===== STATIC FILES =====
+backend/static/
+# Note: This is where Angular build files are copied, so we don't want to commit them
+
+# ===== IDEs AND EDITORS =====
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+*.sublime-project
+
+# ===== OPERATING SYSTEM =====
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# ===== LOGS =====
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# ===== RUNTIME DATA =====
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# ===== COVERAGE DIRECTORY =====
+coverage/
+*.lcov
+
+# ===== ENVIRONMENT VARIABLES =====
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ===== PACKAGE MANAGERS =====
+.npm
+.eslintcache
+.yarn-integrity
+
+# ===== TEMPORARY FILES =====
+*.tmp
+*.temp
+.cache/
+
+# ===== BUILD OUTPUTS =====
+build/
+dist/
+out/
+
+# ===== DEPLOYMENT =====
+deploy/
+deployment/ 

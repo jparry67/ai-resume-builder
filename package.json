@@ -1,0 +1,12 @@
+{
+  "name": "ai-resume-builder",
+  "version": "1.0.0",
+  "description": "AI Resume Builder - Full Stack Application",
+  "scripts": {
+    "dev": "powershell -ExecutionPolicy Bypass -File dev.ps1",
+    "deploy": "powershell -ExecutionPolicy Bypass -File deploy.ps1"
+  },
+  "devDependencies": {
+    "@angular/cli": "^20.0.0"
+  }
+} 

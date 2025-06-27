@@ -1,0 +1,51 @@
+service: ai-resume-builder-backend
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.11
+  region: us-west-1
+  stage: prod
+  environment:
+    STAGE: production
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - logs:CreateLogGroup
+            - logs:CreateLogStream
+            - logs:PutLogEvents
+          Resource: "*"
+
+functions:
+  api:
+    handler: wsgi_handler.handler
+    events:
+      - http:
+          path: /{proxy+}
+          method: ANY
+          cors: true
+      - http:
+          path: /
+          method: ANY
+          cors: true
+
+plugins:
+  - serverless-python-requirements
+  - serverless-wsgi
+
+custom:
+  pythonRequirements:
+    dockerizePip: false
+    noDeploy:
+      - coverage
+      - pytest
+  wsgi:
+    app: app.app
+    packRequirements: false
+
+package:
+  include:
+    - static/**

@@ -1,0 +1,17 @@
+{
+  "name": "ai-resume-builder-backend",
+  "version": "1.0.0",
+  "description": "AI Resume Builder Backend API",
+  "main": "app.py",
+  "scripts": {
+    "deploy": "powershell -ExecutionPolicy Bypass -File deploy.ps1",
+    "remove": "serverless remove",
+    "logs": "serverless logs -f api",
+    "invoke": "serverless invoke -f api"
+  },
+  "devDependencies": {
+    "serverless": "^3.38.0",
+    "serverless-python-requirements": "^6.0.0",
+    "serverless-wsgi": "^3.0.0"
+  }
+} 

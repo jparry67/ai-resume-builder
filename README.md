@@ -2,13 +2,6 @@
 
 A full-stack application with a Flask backend API and Angular frontend for building AI-powered resumes. The Angular app is served directly from the Flask backend.
 
-## Prerequisites
-
-- **Windows PowerShell**: The development and deployment scripts (`dev.ps1` and `deploy.ps1`) are designed for Windows PowerShell and may not work in other shells or operating systems.
-- **Node.js**: Required for Angular development
-- **Python**: Required for Flask backend
-- **AWS CLI**: Required for deployment (configured with appropriate credentials)
-
 ## Project Structure
 
 ```
@@ -31,6 +24,13 @@ ai-resume-builder/
 ## Quick Start
 
 ### Development
+
+#### Prerequisites
+
+- **Windows PowerShell**: The development and deployment scripts (`dev.ps1` and `deploy.ps1`) are designed for Windows PowerShell and may not work in other shells or operating systems.
+- **Node.js**: Required for Angular development
+- **Python**: Required for Flask backend
+- **AWS CLI**: Required for deployment (configured with appropriate credentials)
 
 **Unified Development:**
 ```bash

@@ -59,7 +59,7 @@ This will:
 5. Deploy everything to AWS Lambda
 
 **The app is deployed to:**
-`https://resume-builder.jparry.dev`
+[https://pages.github.com/](https://resume-builder.jparry.dev)
 
 ## API Endpoints
 

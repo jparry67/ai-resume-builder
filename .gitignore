@@ -37,6 +37,7 @@ backend/.hypothesis/
 backend/.mypy_cache/
 backend/.dmypy.json
 backend/dmypy.json
+backend/node_modules/
 
 # ===== AWS/SERVERLESS =====
 backend/.serverless/
@@ -100,6 +101,7 @@ coverage/
 .npm
 .eslintcache
 .yarn-integrity
+node_modules/
 
 # ===== TEMPORARY FILES =====
 *.tmp

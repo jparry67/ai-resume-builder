@@ -5,13 +5,13 @@ function Build-AngularApp {
     Write-Host "Building Angular app for development..." -ForegroundColor Green
 
     Push-Location "frontend"
-    Write-Host "Installing frontend dependencies..." -ForegroundColor Yellow
-    npm install
-    if ($LASTEXITCODE -ne 0) {
-        Write-Host "Frontend dependency installation failed!" -ForegroundColor Red
-        Pop-Location
-        return $false
-    }
+    # Write-Host "Installing frontend dependencies..." -ForegroundColor Yellow
+    # npm install
+    # if ($LASTEXITCODE -ne 0) {
+    #     Write-Host "Frontend dependency installation failed!" -ForegroundColor Red
+    #     Pop-Location
+    #     return $false
+    # }
     ng build --configuration=development --base-href=/
     if ($LASTEXITCODE -ne 0) {
         Write-Host "Angular build failed!" -ForegroundColor Red

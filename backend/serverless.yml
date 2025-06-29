@@ -1,6 +1,6 @@
 service: ai-resume-builder-backend
 
-frameworkVersion: '3'
+frameworkVersion: '4'
 
 provider:
   name: aws
@@ -49,3 +49,4 @@ custom:
 package:
   include:
     - static/**
+    - app.py

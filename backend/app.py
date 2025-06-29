@@ -1,17 +1,13 @@
 from flask import Flask, jsonify, send_from_directory, request
 import os
-import numpy as np
 
 app = Flask(__name__, static_folder='static')
 
 @app.route('/api/hello', methods=['GET'])
 def hello_world():
-    """Simple API endpoint that returns 'hello world' with numpy test"""
-    # Test numpy functionality
-    random_number = np.random.randint(1, 101)
+    """Simple API endpoint that returns 'hello world'"""
     return jsonify({
         "message": "hello world",
-        "numpy_test": f"Random number from numpy: {random_number}"
     })
 
 @app.route('/', defaults={'path': ''})

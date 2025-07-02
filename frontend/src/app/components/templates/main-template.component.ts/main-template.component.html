@@ -1,0 +1,74 @@
+<div class="resume" *ngIf="resumeData">
+  <div class="name">
+    <ng-container *ngFor="let name of names; let i = index">
+      <span *ngIf="i !== 0">&nbsp;&nbsp;&nbsp;</span>
+      <span class="first-letter">{{ name[0] | uppercase }}</span>
+      <span class="rest-of-name">{{ name[1] | uppercase }}</span>
+    </ng-container>
+  </div>
+  <div *ngIf="resumeData.summary" class="summary">{{ resumeData.summary }}</div>
+  <div class="contact-info">
+    {{ resumeData.contactInfo.location }}&nbsp;&nbsp;&#x2022;&nbsp;&nbsp;
+    {{ resumeData.contactInfo.phoneNumber }}&nbsp;&nbsp;&#x2022;&nbsp;&nbsp;
+    {{ resumeData.contactInfo.emailAddress }}
+  <!-- </div>
+  <div class="contact-info"> -->
+    <span *ngIf="resumeData.contactInfo.linkedinLink">&nbsp;&nbsp;&#x2022;&nbsp;&nbsp;<a href="resumeData.contactInfo.linkedinLink" target="blank">{{ resumeData.contactInfo.linkedinLink }}</a></span>
+    <!-- <span *ngIf="resumeData.contactInfo.githubLink">&nbsp;&nbsp;&#x2022;&nbsp;&nbsp;<a href="resumeData.contactInfo.githubLink" target="blank">{{ resumeData.contactInfo.githubLink }}</a></span> -->
+  </div>
+  <ng-container *ngFor="let section of resumeData.formattingOptions?.order">
+    <ng-container *ngIf="section === 'skills'">
+      <div class="section">
+        <div class="section-title">SKILLS</div>
+        <ul>
+          <div class="skills" *ngFor="let skillSection of resumeData.skills">
+            <li><span class="skill-section-title">{{ skillSection.title }}</span>: {{ skillSection.skills }}</li>
+          </div>
+        </ul>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="section === 'education'">
+      <div class="section">
+        <div class="section-title">EDUCATION</div>
+        <div class="experience" *ngFor="let school of resumeData.education">
+          <div class="experience-row">
+            <div class="organization">{{ school.name }}</div>
+            <div>{{ school.dates }}</div>
+          </div>
+          <div class="experience-row second">
+            <div>{{ school.degree }}</div>
+            <div>{{ school.location }}</div>
+          </div>
+          <ul class="bullets">
+            <li *ngFor="let bullet of school.bullets">{{ bullet }}</li>
+          </ul>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="section === 'experience'">
+      <div class="section" *ngFor="let experienceSection of resumeData.experienceSections">
+        <div class="section-title">{{ experienceSection.title | uppercase }}</div>
+        <div class="experience" *ngFor="let experience of experienceSection.experiences">
+          <div class="experience-row">
+            <div class="organization">{{ experience.organization }}</div>
+            <div>{{ experience.dates }}</div>
+          </div>
+          <div class="experience-row second">
+            <div>{{ experience.title }}</div>
+            <div>{{ experience.location }}</div>
+          </div>
+          <ul class="bullets">
+            <li *ngFor="let bullet of experience.bullets">{{ bullet }}</li>
+          </ul>
+          <div *ngFor="let bolded of experience.bolded" class="bolded">{{ bolded }}</div>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+  <!-- <div class="section" *ngIf="resumeData.languages">
+    <div class="section-title">LANGUAGES</div>
+    <ul class="bullets">
+      <li *ngFor="let language of resumeData.languages">{{ language.name }}: {{ language.level }}</li>
+    </ul>
+  </div> -->
+</div>

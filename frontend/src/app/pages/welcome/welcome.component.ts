@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { ParticlesComponent } from '../particles/particles.component';
+import { RouterModule, Router } from '@angular/router';
+import { ParticlesComponent } from '../../components/particles/particles.component';
 
 @Component({
   selector: 'app-welcome',
@@ -11,8 +11,9 @@ import { ParticlesComponent } from '../particles/particles.component';
   styleUrl: './welcome.component.css'
 })
 export class WelcomeComponent {
+  constructor(private router: Router) {}
+
   protected getStarted() {
-    // TODO: Navigate to resume builder or sign up page
-    console.log('Get started clicked');
+    this.router.navigate(['/resume']);
   }
-} 
+}

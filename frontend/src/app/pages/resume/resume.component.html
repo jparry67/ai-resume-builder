@@ -1,7 +1,15 @@
 <div class="max-w-6xl mx-auto">  
   <main class="flex h-screen">
-    <div class="bg-white rounded-lg shadow-lg my-auto p-8 mx-auto max-w-4xl max-h-[90vh] overflow-y-auto">
-      <app-main-template [resumeData]="resumeService.resumeData()"></app-main-template>
+    <div class="m-auto max-h-[90vh] overflow-y-auto">
+      <div class="flex justify-end gap-4 p-2">
+        <button class="cursor-pointer bg-blue-600 text-white rounded-md px-5 py-2 font-medium shadow transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400">Save</button>
+        <button class="cursor-pointer bg-blue-600 text-white rounded-md px-5 py-2 font-medium shadow transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400">Save As</button>
+        <button class="cursor-pointer bg-blue-600 text-white rounded-md px-5 py-2 font-medium shadow transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400">Edit</button>
+        <button class="cursor-pointer bg-blue-600 text-white rounded-md px-5 py-2 font-medium shadow transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400" [printTitle]="resumeService.resumeData()?.fileName || 'Resume'" printSectionId="print-section" [useExistingCss]="true" ngxPrint>Print</button>
+      </div>
+      <div class="bg-white rounded-lg shadow-lg m-2 p-8 max-w-4xl">
+        <app-main-template id="print-section" [resumeData]="resumeService.resumeData()"></app-main-template>
+      </div>
     </div>
   </main>
-</div> 
+</div>

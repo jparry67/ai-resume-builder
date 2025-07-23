@@ -8,7 +8,6 @@ import { ParticlesComponent } from '../../components/particles/particles.compone
   standalone: true,
   imports: [CommonModule, RouterModule, ParticlesComponent],
   templateUrl: './welcome.component.html',
-  styleUrl: './welcome.component.css'
 })
 export class WelcomeComponent {
   constructor(private router: Router) {}

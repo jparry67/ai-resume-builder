@@ -1,0 +1,50 @@
+<div class="resume grid place-items-center" *ngIf="resumeData">
+  <div class="name mb-1">
+    <ng-container *ngFor="let name of names; let i = index">
+      <span *ngIf="i !== 0">&nbsp;&nbsp;&nbsp;</span>
+      <span class="text-5xl">{{ name[0] | uppercase }}</span>
+      <span class="text-4xl">{{ name[1] | uppercase }}</span>
+    </ng-container>
+  </div>
+  <div *ngIf="resumeData.personalInfo.summary">{{ resumeData.personalInfo.summary }}</div>
+  <div class="contact-info mb-2">
+    {{ resumeData.personalInfo.location }}
+    &nbsp;&#x2022;&nbsp;
+    {{ resumeData.personalInfo.phoneNumber }}
+    &nbsp;&#x2022;&nbsp;
+    {{ resumeData.personalInfo.emailAddress }}
+    <span *ngIf="resumeData.personalInfo.linkedinLink">
+      &nbsp;&#x2022;&nbsp;
+      <a href="resumeData.personalInfo.linkedinLink" target="blank">
+        {{ resumeData.personalInfo.linkedinLink }}
+      </a>
+    </span>
+  </div>
+  <ng-container *ngFor="let section of resumeData.resumeSections">
+    <div class="section p-1 w-full text-sm" *ngIf="section.type === 'experience'">
+      <div class="text-lg font-bold">{{ section.title | uppercase }}</div>
+      <div class="mb-1" *ngFor="let experience of section.experiences">
+        <div class="flex justify-between">
+          <div class="bold">{{ experience.organization }}</div>
+          <div>{{ experience.dates }}</div>
+        </div>
+        <div class="flex justify-between italic">
+          <div>{{ experience.title }}</div>
+          <div>{{ experience.location }}</div>
+        </div>
+        <ul class="list-disc ml-12">
+          <li *ngFor="let bullet of experience.bullets">{{ bullet }}</li>
+        </ul>
+        <div *ngFor="let bolded of experience.bolded" class="ml-6 font-bold">{{ bolded }}</div>
+      </div>
+    </div>
+    <div class="section p-1 mb-1 w-full text-sm" *ngIf="section.type === 'bullets'">
+      <div class="text-lg font-bold">{{ section.title | uppercase }}</div>
+      <ul class="list-disc ml-12">
+        <div *ngFor="let bullet of section.bullets">
+          <li [innerHTML]="bullet"></li>
+        </div>
+      </ul>
+    </div>
+  </ng-container>
+</div>

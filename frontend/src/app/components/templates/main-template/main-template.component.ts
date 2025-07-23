@@ -19,7 +19,6 @@ export class MainTemplateComponent implements OnInit {
   }
 
   get names() {
-    return this.resumeData ? this.resumeData.name.split(' ').map((name: string) => [name[0], name.slice(1)]) : [];
+    return this.resumeData ? this.resumeData.personalInfo.name.split(' ').map((name: string) => [name[0], name.slice(1)]) : [];
   }
-
 }

@@ -1,7 +1,9 @@
 import { Injectable, signal } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
-export interface ContactInfo {
+export interface PersonalInfo {
+  name: string;
+  summary: string;
   location: string;
   phoneNumber: string;
   emailAddress: string;
@@ -14,60 +16,41 @@ export interface Experience {
   title: string;
   location: string;
   bullets: string[];
-  bolded: string[];
+  bolded?: string[];
 }
 
-export interface ExperienceSection {
+export type ResumeSection = {
   title: string;
+  type: 'experience';
   experiences: Experience[];
-}
-
-export interface Education {
-  name: string;
-  dates: string;
-  degree: string;
-  location: string;
-  gpa: string;
-  bullets: string[];
-}
-
-export interface Skill {
+} | {
   title: string;
-  skills: string;
-}
-
-export interface FormattingOptions {
-  order: string[];
+  type: 'bullets';
+  bullets: string[];
 }
 
 export interface ResumeData {
   id: string;
-  versionLabel: string;
-  name: string;
-  title: string;
-  summary: string;
-  contactInfo: ContactInfo;
-  experienceSections: ExperienceSection[];
-  education: Education[];
-  skills: Skill[];
-  formattingOptions: FormattingOptions;
+  fileName: string;
+  personalInfo: PersonalInfo;
+  resumeSections: ResumeSection[];
 }
 
 const dummyResumeData: ResumeData = {
   id: '123',
-  versionLabel: 'Jaocb_Parry_Resume',
-  name: 'Jacob Parry',
-  title: 'Software Engineer',
-  summary: 'Experienced Full-Stack Engineer with a Dedicated Focus on Security',
-  contactInfo: {
+  fileName: 'Jaocb_Parry_Resume',
+  personalInfo: {
+    name: 'Jacob Parry',
+    summary: 'Experienced Full-Stack Engineer with a Dedicated Focus on Security',
     location: 'Eagle Mountain, UT',
     phoneNumber: '(801) 636-7388',
     emailAddress: 'parryjacob67@gmail.com',
     linkedinLink: 'linkedin.com/in/jacob-parry',
   },
-  experienceSections: [
+  resumeSections: [
     {
       title: 'Experience',
+      type: 'experience',
       experiences: [
         {
           organization: 'Stripe (Vulnerability Management)',
@@ -122,31 +105,35 @@ const dummyResumeData: ResumeData = {
         },
       ],
     },
-  ],
-  education: [
     {
-      name: 'Brigham Young University',
-      dates: 'September 2017 - April 2022',
-      degree: 'Bachelor of Computer Science',
-      location: 'Provo, UT',
-      gpa: '',
+      title: 'Education',
+      type: 'experience',
+      experiences: [
+        {
+          organization: 'Brigham Young University',
+          dates: 'September 2017 - April 2022',
+          title: 'Bachelor of Computer Science',
+          location: 'Provo, UT',
+          bullets: [
+            'Creators Club - Sandbox Cohort 01',
+            'Developers Club, Competitive Programming Club, Association for Computing Machinery (ACM), Society of Hispanic Professional Engineers (SHPE), Cybersecurity Student Association (CSA)',
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Skills',
+      type: 'bullets',
       bullets: [
-        'Creators Club - Sandbox Cohort 01',
-        'Developers Club, Competitive Programming Club, Association for Computing Machinery (ACM), Society of Hispanic Professional Engineers (SHPE), Cybersecurity Student Association (CSA)',
-      ]
+        '<b>Programming Languages</b>: JavaScript, TypeScript, Python, Go, Ruby',
+        '<b>Front End Frameworks</b>: React, Angular, Vue, Ionic',
+        '<b>Back End Frameworks</b>: NestJS, Express',
+        '<b>Databases</b>: MySQL, AWS RDS, MongoDB, AWS DynamoDB',
+        '<b>Cloud Platforms</b>: AWS, Firebase',
+        '<b>Security Certifications</b>: OffSec OSCC (In Progress)',
+      ],
     },
   ],
-  skills: [
-    {title: 'Programming Languages', skills: 'JavaScript, TypeScript, Python, Go, Ruby'},
-    {title: 'Front End Frameworks', skills: 'React, Angular, Vue, Ionic'},
-    {title: 'Back End Frameworks', skills: 'NestJS, Express'},
-    {title: 'Databases', skills: 'MySQL, AWS RDS, MongoDB, AWS DynamoDB'},
-    {title: 'Cloud Platforms', skills: 'AWS, Firebase'},
-    {title: 'Security Certifications', skills: 'OffSec OSCC (In Progress)'}
-  ],
-  formattingOptions: {
-    order: ['experience', 'education', 'skills'],
-  },
 };
 
 @Injectable({

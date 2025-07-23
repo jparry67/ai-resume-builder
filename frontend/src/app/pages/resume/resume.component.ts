@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ResumeService, ResumeData } from '../../services/resume.service';
-import { MainTemplateComponent } from '../../components/templates/main-template.component.ts/main-template.component';
+import { MainTemplateComponent } from '../../components/templates/main-template/main-template.component';
 
 @Component({
   selector: 'app-resume',

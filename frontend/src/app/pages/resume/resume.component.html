@@ -1,7 +1,7 @@
 <div class="max-w-6xl mx-auto">  
   <div class="flex h-screen">
     <div class="m-auto max-h-[90vh] overflow-y-auto">
-      <div class="flex justify-end gap-2 mr-2 my-2">
+      <div class="flex justify-end gap-2 mr-2 mb-2 mt-1">
         <button class="cursor-pointer bg-blue-600 text-white rounded-md px-5 py-2 font-medium shadow transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400" [routerLink]="['/edit']">Edit</button>
         <button class="cursor-pointer bg-blue-600 text-white rounded-md px-5 py-2 font-medium shadow transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400" [printTitle]="resumeService.resumeData()?.fileName || 'Resume'" printSectionId="print-section" [useExistingCss]="true" ngxPrint>Print</button>
       </div>

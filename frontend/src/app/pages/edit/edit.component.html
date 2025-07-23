@@ -1,7 +1,7 @@
 <div class="max-w-6xl mx-auto">  
   <div class="flex h-screen">
     <div class="m-auto max-h-[90vh] overflow-y-auto">
-      <div class="flex justify-end gap-2 mr-2 my-2">
+      <div class="flex justify-end gap-2 mr-2 mb-2 mt-1">
         <button class="cursor-pointer bg-blue-600 text-white rounded-md px-5 py-2 font-medium shadow transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400" (click)="save()">Save</button>
         <button class="cursor-pointer bg-blue-600 text-white rounded-md px-5 py-2 font-medium shadow transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400" (click)="saveAs()">Save As</button>
       </div>
@@ -30,6 +30,10 @@
           <div class="flex gap-2 items-center">
             <label class="block font-medium mb-1 w-xs">LinkedIn Url</label>
             <input class="w-full border rounded px-3 py-2" [(ngModel)]="resume.personalInfo.linkedinLink" name="linkedinLink" />
+          </div>
+          <label class="block font-medium mb-1 w-xs">Resume Sections</label>
+          <div *ngFor="let section of resume.resumeSections; let i = index" class="flex gap-2 items-center">
+            <input class="w-full border rounded px-3 py-2" [(ngModel)]="section.title" [name]="'resumeSection' + i" />
           </div>
         </form>
       </div>

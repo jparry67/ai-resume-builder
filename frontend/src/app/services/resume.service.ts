@@ -148,4 +148,14 @@ export class ResumeService {
     // TODO: Implement resume loading logic
     this.resumeData.set(dummyResumeData);
   }
+
+  updateResume(resumeData: ResumeData) {
+    // TODO: update resume in database
+    this.resumeData.set(resumeData);
+  }
+
+  createResume(resumeData: ResumeData) {
+    // TODO: Create resume in database
+    this.resumeData.set(resumeData);
+  }
 } 

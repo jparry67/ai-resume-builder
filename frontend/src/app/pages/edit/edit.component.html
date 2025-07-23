@@ -1,12 +1,37 @@
 <div class="max-w-6xl mx-auto">  
   <div class="flex h-screen">
     <div class="m-auto max-h-[90vh] overflow-y-auto">
-      <div class="flex justify-end gap-2 mr-2 mb-2">
-        <button class="cursor-pointer bg-blue-600 text-white rounded-md px-5 py-2 font-medium shadow transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400">Save</button>
-        <button class="cursor-pointer bg-blue-600 text-white rounded-md px-5 py-2 font-medium shadow transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400">Save As</button>
+      <div class="flex justify-end gap-2 mr-2 my-2">
+        <button class="cursor-pointer bg-blue-600 text-white rounded-md px-5 py-2 font-medium shadow transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400" (click)="save()">Save</button>
+        <button class="cursor-pointer bg-blue-600 text-white rounded-md px-5 py-2 font-medium shadow transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400" (click)="saveAs()">Save As</button>
       </div>
-      <div class="max-w-4xl">
-        edit fields go here
+      <div class="bg-white rounded-lg shadow-lg mr-2 p-8 max-w-4xl">
+        <form *ngIf="resume" class="space-y-4">
+          <div class="flex gap-2 items-center">
+            <label class="block font-medium mb-1 w-xs">Name</label>
+            <input class="w-full border rounded px-3 py-2" [(ngModel)]="resume.personalInfo.name" name="name" />
+          </div>
+          <div class="flex gap-2 items-center">
+            <label class="block font-medium mb-1 w-xs">Summary</label>
+            <input class="w-full border rounded px-3 py-2" [(ngModel)]="resume.personalInfo.summary" name="summary" />
+          </div>
+          <div class="flex gap-2 items-center">
+            <label class="block font-medium mb-1 w-xs">Location</label>
+            <input class="w-full border rounded px-3 py-2" [(ngModel)]="resume.personalInfo.location" name="location" />
+          </div>
+          <div class="flex gap-2 items-center">
+            <label class="block font-medium mb-1 w-xs">Phone Number</label>
+            <input class="w-full border rounded px-3 py-2" [(ngModel)]="resume.personalInfo.phoneNumber" name="phoneNumber" />
+          </div>
+          <div class="flex gap-2 items-center">
+            <label class="block font-medium mb-1 w-xs">Email Address</label>
+            <input class="w-full border rounded px-3 py-2" [(ngModel)]="resume.personalInfo.emailAddress" name="emailAddress" />
+          </div>
+          <div class="flex gap-2 items-center">
+            <label class="block font-medium mb-1 w-xs">LinkedIn Url</label>
+            <input class="w-full border rounded px-3 py-2" [(ngModel)]="resume.personalInfo.linkedinLink" name="linkedinLink" />
+          </div>
+        </form>
       </div>
     </div>
   </div>

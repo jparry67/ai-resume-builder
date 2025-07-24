@@ -6,7 +6,7 @@
         <button class="cursor-pointer bg-blue-600 text-white rounded-md px-5 py-2 font-medium shadow transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400" (click)="saveAs()">Save As</button>
       </div>
       <div class="bg-white rounded-lg shadow-lg mr-2 p-8 max-w-4xl">
-        <form *ngIf="resume" class="space-y-4">
+        <form *ngIf="resume" class="space-y-2">
           <div class="flex gap-2 items-center">
             <label class="block font-medium mb-1 w-xs">Name</label>
             <input class="w-full border rounded px-3 py-2" [(ngModel)]="resume.personalInfo.name" name="name" />
@@ -31,9 +31,19 @@
             <label class="block font-medium mb-1 w-xs">LinkedIn Url</label>
             <input class="w-full border rounded px-3 py-2" [(ngModel)]="resume.personalInfo.linkedinLink" name="linkedinLink" />
           </div>
-          <label class="block font-medium mb-1 w-xs">Resume Sections</label>
-          <div *ngFor="let section of resume.resumeSections; let i = index" class="flex gap-2 items-center">
-            <input class="w-full border rounded px-3 py-2" [(ngModel)]="section.title" [name]="'resumeSection' + i" />
+          <div class="block font-medium mb-1 w-xs">Resume Sections</div>
+          <div *ngIf="resume.resumeSections" dndDropzone (dndDrop)="onDrop($event)">
+            <div *ngFor="let section of resume.resumeSections; let i = index"
+              class="flex gap-2 items-center my-2"
+              [dndDraggable]="i"
+              (dndStart)="onDragStart(i)"
+              (dndEnd)="onDragEnd()"
+              [style.display]="resumeSectionDraggingIndex === i ? 'none' : ''">
+              <div dndHandle><mat-icon>drag_handle</mat-icon></div>
+              <input class="w-full border rounded px-3 py-2" [(ngModel)]="section.title" [name]="section.title" />
+              <button>Edit</button>
+            </div>
+            <div class="w-full rounded bg-gray-200 h-10 my-2" dndPlaceholderRef></div>
           </div>
         </form>
       </div>

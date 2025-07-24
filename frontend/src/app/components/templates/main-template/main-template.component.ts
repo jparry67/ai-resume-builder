@@ -14,9 +14,7 @@ export class MainTemplateComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-    console.log(this.resumeData);
-  }
+  ngOnInit(): void {}
 
   get names() {
     return this.resumeData ? this.resumeData.personalInfo.name.split(' ').map((name: string) => [name[0], name.slice(1)]) : [];

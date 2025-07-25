@@ -1,5 +1,9 @@
 <form *ngIf="resumeSection" class="space-y-2">
-  <button (click)="onCloseSection()"><mat-icon>arrow_back</mat-icon></button>
+  <button class="cursor-pointer" (click)="onCloseSection()"><mat-icon>arrow_back</mat-icon></button>
+  <div class="flex gap-2 items-center">
+    <label class="block font-medium mb-1 w-xs">Section Title</label>
+    <input class="w-full border rounded px-3 py-2" [(ngModel)]="resumeSection.title" name="title" />
+  </div>
   
   <!-- <div class="flex gap-2 items-center">
     <label class="block font-medium mb-1 w-xs">Name</label>

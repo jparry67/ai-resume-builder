@@ -39,10 +39,28 @@ export class EditResumeSectionComponent implements OnInit {
     if (newIndex > oldIndex) {
       newIndex -= 1;
     }
-    if (!this.resumeSection || this.resumeSection.type !== 'experience' || !this.resumeSection.experiences) {
+    if (!this.resumeSection) {
       return;
     }
-    this.resumeSection.experiences.splice(
+    if (this.resumeSection.type === 'experience' && this.resumeSection.experiences) {
+      this.resumeSection.experiences.splice(
         newIndex, 0, this.resumeSection.experiences.splice(oldIndex, 1)[0]);
+    }
+    if (this.resumeSection.type === 'bullet' && this.resumeSection.bullets) {
+      this.resumeSection.bullets.splice(
+        newIndex, 0, this.resumeSection.bullets.splice(oldIndex, 1)[0]);
+    }
+  }
+
+  add() {
+    if (this.resumeSection && this.resumeSection.type === 'bullet') {
+      this.resumeSection.bullets.push('');
+    }
+  }
+
+  delete(index: number) {
+    if (this.resumeSection && this.resumeSection.type === 'bullet') {
+      this.resumeSection.bullets.splice(index, 1);
+    }
   }
 }

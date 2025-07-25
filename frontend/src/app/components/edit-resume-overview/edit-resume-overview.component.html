@@ -1,29 +1,29 @@
 <form *ngIf="resumeData" class="space-y-2">
   <div class="flex gap-2 items-center">
-    <label class="block font-medium mb-1 w-xs">Name</label>
+    <label class="block font-medium mb-1 w-50">Name</label>
     <input class="w-full border rounded px-3 py-2" [(ngModel)]="resumeData.personalInfo.name" name="name" />
   </div>
   <div class="flex gap-2 items-center">
-    <label class="block font-medium mb-1 w-xs">Summary</label>
+    <label class="block font-medium mb-1 w-50">Summary</label>
     <input class="w-full border rounded px-3 py-2" [(ngModel)]="resumeData.personalInfo.summary" name="summary" />
   </div>
   <div class="flex gap-2 items-center">
-    <label class="block font-medium mb-1 w-xs">Location</label>
+    <label class="block font-medium mb-1 w-50">Location</label>
     <input class="w-full border rounded px-3 py-2" [(ngModel)]="resumeData.personalInfo.location" name="location" />
   </div>
   <div class="flex gap-2 items-center">
-    <label class="block font-medium mb-1 w-xs">Phone Number</label>
+    <label class="block font-medium mb-1 w-50">Phone Number</label>
     <input class="w-full border rounded px-3 py-2" [(ngModel)]="resumeData.personalInfo.phoneNumber" name="phoneNumber" />
   </div>
   <div class="flex gap-2 items-center">
-    <label class="block font-medium mb-1 w-xs">Email Address</label>
+    <label class="block font-medium mb-1 w-50">Email Address</label>
     <input class="w-full border rounded px-3 py-2" [(ngModel)]="resumeData.personalInfo.emailAddress" name="emailAddress" />
   </div>
   <div class="flex gap-2 items-center">
-    <label class="block font-medium mb-1 w-xs">LinkedIn Url</label>
+    <label class="block font-medium mb-1 w-50">LinkedIn Url</label>
     <input class="w-full border rounded px-3 py-2" [(ngModel)]="resumeData.personalInfo.linkedinLink" name="linkedinLink" />
   </div>
-  <div class="block font-medium mb-1 w-xs">Resume Sections</div>
+  <div class="block font-medium mb-1 w-50">Resume Sections</div>
   <div *ngIf="resumeData.resumeSections" dndDropzone (dndDrop)="onDrop($event)">
     <div *ngFor="let section of resumeData.resumeSections; let i = index"
       class="flex gap-2 items-center my-2"

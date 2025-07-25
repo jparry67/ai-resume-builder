@@ -38,7 +38,7 @@
         <div *ngFor="let bolded of experience.bolded" class="ml-6 font-bold">{{ bolded }}</div>
       </div>
     </div>
-    <div class="section p-1 mb-1 w-full text-sm" *ngIf="section.type === 'bullets'">
+    <div class="section p-1 mb-1 w-full text-sm" *ngIf="section.type === 'bullet'">
       <div class="text-lg font-bold">{{ section.title | uppercase }}</div>
       <ul class="list-disc ml-12">
         <div *ngFor="let bullet of section.bullets">

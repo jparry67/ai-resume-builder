@@ -25,7 +25,7 @@ export type ResumeSection = {
   experiences: Experience[];
 } | {
   title: string;
-  type: 'bullets';
+  type: 'bullet';
   bullets: string[];
 }
 
@@ -123,7 +123,7 @@ const dummyResumeData: ResumeData = {
     },
     {
       title: 'Skills',
-      type: 'bullets',
+      type: 'bullet',
       bullets: [
         '<b>Programming Languages</b>: JavaScript, TypeScript, Python, Go, Ruby',
         '<b>Front End Frameworks</b>: React, Angular, Vue, Ionic',

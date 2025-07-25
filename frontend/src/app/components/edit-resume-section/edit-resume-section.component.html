@@ -1,35 +1,60 @@
 <form *ngIf="resumeSection" class="space-y-2">
   <button class="cursor-pointer" (click)="onCloseSection()"><mat-icon>arrow_back</mat-icon></button>
   <div class="flex gap-2 items-center">
-    <label class="block font-medium mb-1 w-xs">Section Title</label>
+    <label class="block font-medium mb-1 w-50">Section Title</label>
     <input class="w-full border rounded px-3 py-2" [(ngModel)]="resumeSection.title" name="title" />
   </div>
+  <ng-container *ngIf="resumeSection.type === 'experience'">
+    experience type
+  </ng-container>
+  <ng-container *ngIf="resumeSection.type === 'bullet'">
+    <div *ngIf="resumeSection.bullets" dndDropzone (dndDrop)="onDrop($event)">
+      <div *ngFor="let bullet of resumeSection.bullets; let i = index"
+        class="flex gap-2 items-center my-2"
+        [dndDraggable]="i"
+        (dndStart)="onDragStart(i)"
+        (dndEnd)="onDragEnd()"
+        [style.display]="draggingIndex === i ? 'none' : ''">
+        <div dndHandle>
+          <mat-icon>drag_handle</mat-icon>
+        </div>
+        <input class="w-full border rounded px-3 py-2" [(ngModel)]="resumeSection.bullets[i]" [name]="bullet" />
+        <button class="cursor-pointer" (click)="delete(i)">
+          <mat-icon>delete_forever</mat-icon>
+        </button>
+      </div>
+      <div class="w-full rounded bg-gray-200 h-10 my-2" dndPlaceholderRef></div>
+    </div>
+    <button class="cursor-pointer w-full rounded bg-gray-300 text-gray-700 h-10 my-2 flex items-center justify-center" (click)="add()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </ng-container>
   
   <!-- <div class="flex gap-2 items-center">
-    <label class="block font-medium mb-1 w-xs">Name</label>
+    <label class="block font-medium mb-1 w-50">Name</label>
     <input class="w-full border rounded px-3 py-2" [(ngModel)]="resumeData.personalInfo.name" name="name" />
   </div>
   <div class="flex gap-2 items-center">
-    <label class="block font-medium mb-1 w-xs">Summary</label>
+    <label class="block font-medium mb-1 w-50">Summary</label>
     <input class="w-full border rounded px-3 py-2" [(ngModel)]="resumeData.personalInfo.summary" name="summary" />
   </div>
   <div class="flex gap-2 items-center">
-    <label class="block font-medium mb-1 w-xs">Location</label>
+    <label class="block font-medium mb-1 w-50">Location</label>
     <input class="w-full border rounded px-3 py-2" [(ngModel)]="resumeData.personalInfo.location" name="location" />
   </div>
   <div class="flex gap-2 items-center">
-    <label class="block font-medium mb-1 w-xs">Phone Number</label>
+    <label class="block font-medium mb-1 w-50">Phone Number</label>
     <input class="w-full border rounded px-3 py-2" [(ngModel)]="resumeData.personalInfo.phoneNumber" name="phoneNumber" />
   </div>
   <div class="flex gap-2 items-center">
-    <label class="block font-medium mb-1 w-xs">Email Address</label>
+    <label class="block font-medium mb-1 w-50">Email Address</label>
     <input class="w-full border rounded px-3 py-2" [(ngModel)]="resumeData.personalInfo.emailAddress" name="emailAddress" />
   </div>
   <div class="flex gap-2 items-center">
-    <label class="block font-medium mb-1 w-xs">LinkedIn Url</label>
+    <label class="block font-medium mb-1 w-50">LinkedIn Url</label>
     <input class="w-full border rounded px-3 py-2" [(ngModel)]="resumeData.personalInfo.linkedinLink" name="linkedinLink" />
   </div>
-  <div class="block font-medium mb-1 w-xs">Resume Sections</div>
+  <div class="block font-medium mb-1 w-50">Resume Sections</div>
   <div *ngIf="resumeData.resumeSections" dndDropzone (dndDrop)="onDrop($event)">
     <div *ngFor="let section of resumeData.resumeSections; let i = index"
       class="flex gap-2 items-center my-2"

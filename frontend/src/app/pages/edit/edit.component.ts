@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ResumeService, ResumeData } from '../../services/resume.service';
-import { FormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
-import { DndModule, DndDropEvent } from 'ngx-drag-drop';
-import { MatIconModule } from '@angular/material/icon';
+import { EditResumeOverviewComponent } from '../../components/edit-resume-overview/edit-resume-overview.component';
+import { EditResumeSectionComponent } from '../../components/edit-resume-section/edit-resume-section.component';
 
 @Component({
   selector: 'app-edit',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, DndModule, MatIconModule],
+  imports: [CommonModule, RouterModule, EditResumeOverviewComponent, EditResumeSectionComponent],
   templateUrl: './edit.component.html',
 })
 export class EditComponent implements OnInit {
   constructor(public resumeService: ResumeService, private router: Router) {}
   resume: ResumeData | null = null;
-  resumeSectionDraggingIndex: number | null = null;
+  editingResumeSectionIndex: number | null = null;
+  editingExperienceSectionIndex: number | null = null;
 
   ngOnInit() {
     this.resume = this.resumeService.resumeData();
@@ -34,24 +34,11 @@ export class EditComponent implements OnInit {
     this.router.navigate(['/resume']);
   }
 
-  onDragStart(index: number) {
-    this.resumeSectionDraggingIndex = index;
+  onEditSection(index: number) {
+    this.editingResumeSectionIndex = index;
   }
 
-  onDragEnd() {
-    this.resumeSectionDraggingIndex = null;
-  }
-
-  onDrop(event: DndDropEvent) {
-    const oldIndex = event.data;
-    let newIndex = event.index as number;
-    if (newIndex > oldIndex) {
-      newIndex -= 1;
-    }
-    if (!this.resume || !this.resume.resumeSections) {
-      return;
-    }
-    this.resume.resumeSections.splice(
-        newIndex, 0, this.resume.resumeSections.splice(oldIndex, 1)[0]);
+  onCloseSection() {
+    this.editingResumeSectionIndex = null;
   }
 }

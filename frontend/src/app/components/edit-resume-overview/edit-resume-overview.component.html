@@ -1,4 +1,4 @@
-<form *ngIf="resumeData" class="space-y-2">
+<div *ngIf="resumeData" class="space-y-2">
   <div class="flex gap-2 items-center">
     <label class="block font-medium mb-1 w-50">Name</label>
     <input class="w-full border rounded px-3 py-2" [(ngModel)]="resumeData.personalInfo.name" name="name" />
@@ -32,9 +32,9 @@
       (dndEnd)="onDragEnd()"
       [style.display]="draggingIndex === i ? 'none' : ''">
       <div dndHandle><mat-icon>drag_handle</mat-icon></div>
-      <input class="w-full border rounded px-3 py-2" [(ngModel)]="section.title" [name]="section.title" />
+      <input class="w-full border rounded px-3 py-2" [(ngModel)]="section.title" />
       <button class="cursor-pointer rounded-md px-5 py-2 font-medium border border-black shadow" (click)="onEditSection(i)">Edit</button>
     </div>
     <div class="w-full rounded bg-gray-200 h-10 my-2" dndPlaceholderRef></div>
   </div>
-</form>
+</div>

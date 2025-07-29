@@ -63,4 +63,8 @@ export class EditResumeSectionComponent implements OnInit {
       this.resumeSection.bullets.splice(index, 1);
     }
   }
+
+  trackByIndex(index: number, item: any): number {
+    return index;
+  }
 }

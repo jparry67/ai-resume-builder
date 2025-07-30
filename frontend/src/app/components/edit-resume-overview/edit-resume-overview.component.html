@@ -31,10 +31,34 @@
       (dndStart)="onDragStart(i)"
       (dndEnd)="onDragEnd()"
       [style.display]="draggingIndex === i ? 'none' : ''">
-      <div dndHandle><mat-icon>drag_handle</mat-icon></div>
+      <div class="cursor-pointer" dndHandle><mat-icon>drag_handle</mat-icon></div>
       <input class="w-full border rounded px-3 py-2" [(ngModel)]="section.title" />
-      <button class="cursor-pointer rounded-md px-5 py-2 font-medium border border-black shadow" (click)="onEditSection(i)">Edit</button>
+      <button class="cursor-pointer" (click)="onEditSection(i)">
+        <mat-icon>edit_note</mat-icon>
+      </button>
+      <button class="cursor-pointer" (click)="delete(i)">
+        <mat-icon>delete_forever</mat-icon>
+      </button>
     </div>
     <div class="w-full rounded bg-gray-200 h-10 my-2" dndPlaceholderRef></div>
+  </div>
+  <button *ngIf="!isAddingSection" class="cursor-pointer w-full rounded bg-gray-300 text-gray-700 h-10 my-2 flex items-center justify-center" (click)="add()">
+    <mat-icon>add</mat-icon>
+  </button>
+  <div *ngIf="isAddingSection">
+    <div class="flex gap-2 items-center">
+      <label class="block font-medium mb-1 w-50">Title</label>
+      <input class="w-full border rounded px-3 py-2" [(ngModel)]="newSectionTitle" name="newSectionTitle" />
+    </div>
+    <div class="flex gap-4 items-center my-2">
+      <label class="block font-medium">Section Type:</label>
+      <mat-radio-group [(ngModel)]="newSectionType" name="sectionType">
+        <mat-radio-button value="bullet">Bullet</mat-radio-button>
+        <mat-radio-button value="experience">Experience</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <button class="cursor-pointer rounded-md px-5 py-2 font-medium border border-black shadow disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-500" [disabled]="!newSectionTitle" (click)="confirmAddSection()">
+      Add
+    </button>
   </div>
 </div>

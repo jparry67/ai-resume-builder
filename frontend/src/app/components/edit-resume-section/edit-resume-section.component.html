@@ -15,7 +15,7 @@
         (dndStart)="onDragStart(i)"
         (dndEnd)="onDragEnd()"
         [style.display]="draggingIndex === i ? 'none' : ''">
-        <div dndHandle>
+        <div class="cursor-pointer" dndHandle>
           <mat-icon>drag_handle</mat-icon>
         </div>
         <input class="w-full border rounded px-3 py-2" [(ngModel)]="resumeSection.bullets[i]" />
@@ -62,7 +62,7 @@
       (dndStart)="onDragStart(i)"
       (dndEnd)="onDragEnd()"
       [style.display]="draggingIndex === i ? 'none' : ''">
-      <div dndHandle><mat-icon>drag_handle</mat-icon></div>
+      <div class="cursor-pointer" dndHandle><mat-icon>drag_handle</mat-icon></div>
       <input class="w-full border rounded px-3 py-2" [(ngModel)]="section.title" [name]="section.title" />
       <button>Edit</button>
     </div>

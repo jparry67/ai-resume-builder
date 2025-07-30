@@ -4,17 +4,21 @@ import { ResumeData } from '../../services/resume.service';
 import { FormsModule } from '@angular/forms';
 import { DndModule, DndDropEvent } from 'ngx-drag-drop';
 import { MatIconModule } from '@angular/material/icon';
+import { MatRadioModule } from '@angular/material/radio';
 
 @Component({
   selector: 'app-edit-resume-overview',
   standalone: true,
-  imports: [CommonModule, FormsModule, DndModule, MatIconModule],
+  imports: [CommonModule, FormsModule, DndModule, MatIconModule, MatRadioModule],
   templateUrl: './edit-resume-overview.component.html',
 })
 export class EditResumeOverviewComponent implements OnInit {
   @Input() resumeData: ResumeData | null = null;
   @Output() editSection = new EventEmitter<number>();
   draggingIndex: number | null = null;
+  isAddingSection: boolean = false;
+  newSectionTitle: string = '';
+  newSectionType: 'bullet' | 'experience' = 'bullet';
 
   constructor() {}
 
@@ -43,5 +47,36 @@ export class EditResumeOverviewComponent implements OnInit {
 
   onEditSection(index: number) {
     this.editSection.emit(index);
+  }
+
+  delete(index: number) {
+    if (this.resumeData) {
+      this.resumeData.resumeSections.splice(index, 1);
+    }
+  }
+
+  add() {
+    this.isAddingSection = true;
+  }
+
+  confirmAddSection() {
+    if (this.resumeData) {
+      if (this.newSectionType === 'bullet') {
+        this.resumeData.resumeSections.push({
+          title: this.newSectionTitle,
+          type: this.newSectionType,
+          bullets: [],
+        });
+      } else {
+        this.resumeData.resumeSections.push({
+          title: this.newSectionTitle,
+          type: this.newSectionType,
+          experiences: [],
+        });
+      }
+    }
+    this.isAddingSection = false;
+    this.newSectionTitle = '';
+    this.newSectionType = 'bullet';
   }
 }

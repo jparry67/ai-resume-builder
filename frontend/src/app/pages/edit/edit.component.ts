@@ -29,6 +29,10 @@ export class EditComponent implements OnInit {
     this.router.navigate(['/resume']);
   }
 
+  cancel() {
+    this.router.navigate(['/resume']);
+  }
+
   saveAs() {
     this.resumeService.createResume(this.resume!);
     this.router.navigate(['/resume']);

@@ -74,7 +74,14 @@ export class EditResumeOverviewComponent implements OnInit {
           experiences: [],
         });
       }
+      this.editSection.emit(this.resumeData.resumeSections.length - 1);
     }
+    this.isAddingSection = false;
+    this.newSectionTitle = '';
+    this.newSectionType = 'bullet';
+  }
+
+  cancelAddSection() {
     this.isAddingSection = false;
     this.newSectionTitle = '';
     this.newSectionType = 'bullet';

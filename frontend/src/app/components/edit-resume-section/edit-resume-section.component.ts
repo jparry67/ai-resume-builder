@@ -16,6 +16,11 @@ export class EditResumeSectionComponent implements OnInit {
   @Output() editExperience = new EventEmitter<number>();
   @Output() closeSection = new EventEmitter();
   draggingIndex: number | null = null;
+  isAddingSection: boolean = false;
+  newSectionOrganization: string = '';
+  newSectionTitle: string = '';
+  newSectionDates: string = '';
+  newSectionLocation: string = '';
 
   constructor() {}
 
@@ -52,15 +57,49 @@ export class EditResumeSectionComponent implements OnInit {
     }
   }
 
+  onEditSection(index: number) {
+    this.editExperience.emit(index);
+  }
+
   add() {
     if (this.resumeSection && this.resumeSection.type === 'bullet') {
       this.resumeSection.bullets.push('');
+    } else if (this.resumeSection && this.resumeSection.type === 'experience') {
+      this.isAddingSection = true;
     }
+  }
+
+  confirmAddSection() {
+    if (this.resumeSection && this.resumeSection.type === 'experience') {
+      this.resumeSection.experiences.push({
+        organization: this.newSectionOrganization,
+        title: this.newSectionTitle,
+        dates: this.newSectionDates,
+        location: this.newSectionLocation,
+        bullets: [],
+      });
+      this.editExperience.emit(this.resumeSection.experiences.length - 1);
+    }
+    this.isAddingSection = false;
+    this.newSectionOrganization = '';
+    this.newSectionTitle = '';
+    this.newSectionDates = '';
+    this.newSectionLocation = '';
+  }
+
+  cancelAddSection() {
+    this.isAddingSection = false;
+    this.newSectionOrganization = '';
+    this.newSectionTitle = '';
+    this.newSectionDates = '';
+    this.newSectionLocation = '';
   }
 
   delete(index: number) {
     if (this.resumeSection && this.resumeSection.type === 'bullet') {
       this.resumeSection.bullets.splice(index, 1);
+    } else if (this.resumeSection && this.resumeSection.type === 'experience') {
+      this.resumeSection.experiences.splice(index, 1);
     }
   }
 

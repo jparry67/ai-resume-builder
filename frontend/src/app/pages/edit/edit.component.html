@@ -3,7 +3,8 @@
     <div class="m-auto max-h-[90vh] overflow-y-auto">
       <div class="flex justify-end gap-2 mr-2 mb-2 mt-1">
         <button class="cursor-pointer bg-blue-600 text-white rounded-md px-5 py-2 font-medium shadow transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400" (click)="save()">Save</button>
-        <button class="cursor-pointer bg-blue-600 text-white rounded-md px-5 py-2 font-medium shadow transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400" (click)="saveAs()">Save As</button>
+        <button class="cursor-pointer bg-gray-500 text-white rounded-md px-5 py-2 font-medium shadow transition focus:outline-none focus:ring-2" (click)="cancel()">Cancel</button>
+        <!-- <button class="cursor-pointer bg-blue-600 text-white rounded-md px-5 py-2 font-medium shadow transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400" (click)="saveAs()">Save As</button> -->
       </div>
       <div *ngIf="resume" class="bg-white rounded-lg shadow-lg mx-2 p-8 max-w-4xl">
         <app-edit-resume-overview *ngIf="editingResumeSectionIndex === null" [resumeData]="resume" (editSection)="onEditSection($event)" />

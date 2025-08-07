@@ -1,1 +1,46 @@
 @import "tailwindcss";
+
+.text-scaled-xs {
+  font-size: calc(var(--base-font-size) * 0.75);
+  line-height: calc(var(--base-font-size) * 1);
+}
+
+.text-scaled-sm {
+  font-size: calc(var(--base-font-size) * 0.875);
+  line-height: calc(var(--base-font-size) * 1.25);
+}
+
+.text-scaled-base {
+  font-size: calc(var(--base-font-size) * 1);
+  line-height: calc(var(--base-font-size) * 1.5);
+}
+
+.text-scaled-lg {
+  font-size: calc(var(--base-font-size) * 1.125);
+  line-height: calc(var(--base-font-size) * 1.75);
+}
+
+.text-scaled-xl {
+  font-size: calc(var(--base-font-size) * 1.25);
+  line-height: calc(var(--base-font-size) * 1.75);
+}
+
+.text-scaled-2xl {
+  font-size: calc(var(--base-font-size) * 1.5);
+  line-height: calc(var(--base-font-size) * 2);
+}
+
+.text-scaled-3xl {
+  font-size: calc(var(--base-font-size) * 1.875);
+  line-height: calc(var(--base-font-size) * 2.25);
+}
+
+.text-scaled-4xl {
+  font-size: calc(var(--base-font-size) * 2.25);
+  line-height: calc(var(--base-font-size) * 2.5);
+}
+
+.text-scaled-5xl {
+  font-size: calc(var(--base-font-size) * 3);
+  line-height: calc(var(--base-font-size) * 1);
+}

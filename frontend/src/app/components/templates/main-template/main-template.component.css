@@ -8,5 +8,8 @@
   font-family: 'Playfair Display', serif;
 }
 .section {
-  border-top: 3px solid #92a6db;
+  border-top: 3px solid #34517D;
+}
+.organization {
+  color: #34517D;
 }

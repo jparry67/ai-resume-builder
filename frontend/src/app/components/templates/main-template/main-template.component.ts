@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './main-template.component.html',
-  styleUrls: ['./main-template.component.css']
+  styleUrl: './main-template.component.css',
 })
 export class MainTemplateComponent implements OnInit {
   @Input() resumeData: ResumeData | null = null;

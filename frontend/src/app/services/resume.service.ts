@@ -29,11 +29,16 @@ export type ResumeSection = {
   bullets: string[];
 }
 
+export interface TemplateConfig {
+  baseFontSize: number;
+}
+
 export interface ResumeData {
   id: string;
   fileName: string;
   personalInfo: PersonalInfo;
   resumeSections: ResumeSection[];
+  templateConfig: TemplateConfig;
 }
 
 const dummyResumeData: ResumeData = {
@@ -46,6 +51,9 @@ const dummyResumeData: ResumeData = {
     phoneNumber: '(801) 636-7388',
     emailAddress: 'parryjacob67@gmail.com',
     linkedinLink: 'linkedin.com/in/jacob-parry',
+  },
+  templateConfig: {
+    baseFontSize: 14,
   },
   resumeSections: [
     {

@@ -118,13 +118,13 @@ export class ResumeComponent implements OnInit {
     this.removeExistingLines(containerEl);
     containerEl.style.height = 'auto';
 
-    // First, try increasing from current size until it doesn't fit
+    // Get initial size and calculate current number of pages
     let currentSize = startingSize;
     let contentHeight = containerEl.scrollHeight;
     let effectiveHeight = Math.max(0, contentHeight - this.TOP_PAGE_MARGIN);
     let numberOfPages = Math.max(1, Math.ceil(effectiveHeight / this.PAGE_HEIGHT));
     
-    // Try increasing
+    // First, try increasing from current size until it doesn't fit
     while (numberOfPages === 1 && currentSize < this.MAX_FONT_SIZE_PX) {
       this.templateConfig = { ...this.templateConfig, baseFontSize: currentSize };
       this.cdr.detectChanges();
@@ -144,9 +144,8 @@ export class ResumeComponent implements OnInit {
       }
     }
     
-    // Now decrease until we get back to 1 page
+    // Now decrease font size until resume fits on 1 page
     if (numberOfPages > 1) {
-      currentSize = startingSize - 1;
       while (currentSize >= this.MIN_FONT_SIZE_PX) {
         this.templateConfig = { ...this.templateConfig, baseFontSize: currentSize };
         this.cdr.detectChanges();

@@ -26,16 +26,18 @@
       <div class="mb-1" *ngFor="let experience of section.experiences">
         <div class="flex justify-between">
           <div class="font-bold organization">{{ experience.organization }}</div>
-          <div>{{ experience.dates }}</div>
-        </div>
-        <div class="flex justify-between italic">
-          <div>{{ experience.title }}</div>
           <div>{{ experience.location }}</div>
         </div>
-        <ul class="list-disc ml-12">
-          <li *ngFor="let bullet of experience.bullets">{{ bullet }}</li>
-        </ul>
-        <div *ngFor="let bolded of experience.bolded" class="ml-6 font-bold">{{ bolded }}</div>
+          <div *ngFor="let role of experience.roles">
+          <div class="flex justify-between">
+            <div class="italic">{{ role.title }}</div>
+            <div>{{ role.dates }}</div>
+          </div>
+          <ul class="list-disc ml-12">
+            <li *ngFor="let bullet of role.bullets">{{ bullet }}</li>
+          </ul>
+          <div *ngFor="let bolded of role.bolded" class="ml-6 font-bold">{{ bolded }}</div>
+        </div>
       </div>
     </div>
     <div class="section p-1 mb-1 w-full text-scaled-sm" *ngIf="section.type === 'bullet'">

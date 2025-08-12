@@ -14,7 +14,7 @@
         (dndEnd)="onDragEnd()"
         [style.display]="draggingIndex === i ? 'none' : ''">
         <div class="cursor-pointer" dndHandle><mat-icon>drag_handle</mat-icon></div>
-        <div class="w-full pb-2 cursor-pointer" dndHandle>{{ section.organization }}, {{ section.title }}, {{ section.dates }}</div>
+        <div class="w-full pb-2 cursor-pointer" dndHandle>{{ section.organization }}, {{ section.location }}</div>
         <button class="cursor-pointer" (click)="onEditSection(i)">
           <mat-icon>edit_note</mat-icon>
         </button>

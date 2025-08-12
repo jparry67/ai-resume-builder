@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ResumeSection } from '../../services/resume.service';
+import { ResumeSection, Experience, Role } from '../../services/resume.service';
 import { FormsModule } from '@angular/forms';
 import { DndModule, DndDropEvent } from 'ngx-drag-drop';
 import { MatIconModule } from '@angular/material/icon';
@@ -71,13 +71,19 @@ export class EditResumeSectionComponent implements OnInit {
 
   confirmAddSection() {
     if (this.resumeSection && this.resumeSection.type === 'experience') {
-      this.resumeSection.experiences.push({
-        organization: this.newSectionOrganization,
+      const newRole: Role = {
         title: this.newSectionTitle,
         dates: this.newSectionDates,
-        location: this.newSectionLocation,
         bullets: [],
-      });
+      };
+      
+      const newExperience: Experience = {
+        organization: this.newSectionOrganization,
+        location: this.newSectionLocation,
+        roles: [newRole],
+      };
+      
+      this.resumeSection.experiences.push(newExperience);
       this.editExperience.emit(this.resumeSection.experiences.length - 1);
     }
     this.isAddingSection = false;

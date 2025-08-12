@@ -53,7 +53,7 @@ const dummyResumeData: ResumeData = {
     linkedinLink: 'linkedin.com/in/jacob-parry',
   },
   templateConfig: {
-    baseFontSize: 14,
+    baseFontSize: 16,
   },
   resumeSections: [
     {

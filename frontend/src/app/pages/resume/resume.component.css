@@ -1,0 +1,13 @@
+.content-box {
+  width: 805px;
+  position: relative;
+  overflow-y: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.dynamic-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-top: 2px dotted #999;
+}

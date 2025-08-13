@@ -44,3 +44,5 @@
   font-size: calc(var(--base-font-size) * 3);
   line-height: calc(var(--base-font-size) * 1);
 }
+
+@custom-variant hover (&:hover);

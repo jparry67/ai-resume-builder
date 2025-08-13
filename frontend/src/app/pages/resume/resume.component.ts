@@ -30,7 +30,11 @@ export class ResumeComponent implements OnInit {
   constructor(public resumeService: ResumeService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
-    this.resumeService.loadResume('123');
+    this.resumeService.loadResumeVersions();
+    const versions = this.resumeService.resumeVersions();
+    if (versions.length) {
+      this.resumeService.loadResume(versions[0].id);
+    }
     this.loadTemplateConfig();
   }
 

@@ -15,4 +15,8 @@ export class WelcomeComponent {
   protected getStarted() {
     this.router.navigate(['/resume']);
   }
+
+  protected login() {
+    this.router.navigate(['/login']);
+  }
 }

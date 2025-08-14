@@ -1,8 +1,8 @@
 <div class="max-w-6xl mx-auto">  
   <div class="flex h-screen">
-    <div class="m-auto h-[90vh] bg-gray-600 rounded overflow-y-auto">
+    <div class="m-auto h-[90vh] bg-gray-800 rounded-md overflow-y-auto">
     <div *ngFor="let version of resumeService.resumeVersions()">
-      <div class="cursor-pointer m-2 p-2 rounded text-white hover:shadow-sm hover:bg-gray-700 hover:text-gray-200 transition-colors" (click)="resumeService.loadResume(version.id)">
+      <div class="cursor-pointer m-2 p-2 rounded-md text-white hover:shadow-sm hover:bg-gray-700 hover:text-gray-200 transition-colors" (click)="resumeService.loadResume(version.id)">
         <div class="font-semibold">{{ version.fileName }}</div>
       </div>
     </div>

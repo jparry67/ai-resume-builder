@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ParticlesComponent } from '../../components/particles/particles.component';
 import { LoginData, RegisterData, AuthService } from '../../services/auth.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -33,7 +34,7 @@ export class LoginComponent {
   };
   confirmPassword = '';
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(private router: Router, private authService: AuthService, private cdRef: ChangeDetectorRef) {}
 
   toggleMode() {
     this.isLoginMode = !this.isLoginMode;
@@ -44,28 +45,28 @@ export class LoginComponent {
 
   login() {
     this.loginError = '';
-    this.authService.login(this.loginData).subscribe({
+    this.authService.login(this.loginData).pipe(take(1)).subscribe({
       next: (response) => {
         this.router.navigate(['/resume']);
       },
       error: (err) => {
         console.error('Login failed:', err.error.error);
         this.loginError = err.error.error || 'Login failed. Please try again.';
-        console.log('setting loginError', this.loginError);
+        this.cdRef.markForCheck();
       }
     });
   }
 
   register() {
     this.registerError = '';
-    this.authService.register(this.registerData).subscribe({
+    this.authService.register(this.registerData).pipe(take(1)).subscribe({
       next: (response) => {
         this.router.navigate(['/resume']);
       },
       error: (err) => {
         console.error('Registration failed:', err.error.error);
         this.registerError = err.error.error || 'Registration failed. Please try again.';
-        console.log('setting registerError', this.registerError);
+        this.cdRef.markForCheck();
       }
     });
   }

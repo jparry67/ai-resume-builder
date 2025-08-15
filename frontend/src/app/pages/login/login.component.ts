@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ParticlesComponent } from '../../components/particles/particles.component';
+import { LoginData, RegisterData, AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,37 +14,60 @@ import { ParticlesComponent } from '../../components/particles/particles.compone
 export class LoginComponent {
   isLoginMode = true;
   
+  // Error messages
+  loginError = '';
+  registerError = '';
+  
   // Login form data
-  loginData = {
+  loginData: LoginData = {
     email: '',
     password: ''
   };
   
   // Register form data
-  registerData = {
+  registerData: RegisterData = {
     firstName: '',
     lastName: '',
     email: '',
     password: '',
-    confirmPassword: ''
   };
+  confirmPassword = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   toggleMode() {
     this.isLoginMode = !this.isLoginMode;
+    // Clear errors when switching modes
+    this.loginError = '';
+    this.registerError = '';
   }
 
   login() {
-    // TODO: Implement actual login logic
-    console.log('Login attempt:', this.loginData);
-    this.router.navigate(['/resume']);
+    this.loginError = '';
+    this.authService.login(this.loginData).subscribe({
+      next: (response) => {
+        this.router.navigate(['/resume']);
+      },
+      error: (err) => {
+        console.error('Login failed:', err.error.error);
+        this.loginError = err.error.error || 'Login failed. Please try again.';
+        console.log('setting loginError', this.loginError);
+      }
+    });
   }
 
   register() {
-    // TODO: Implement actual registration logic
-    console.log('Register attempt:', this.registerData);
-    this.router.navigate(['/resume']);
+    this.registerError = '';
+    this.authService.register(this.registerData).subscribe({
+      next: (response) => {
+        this.router.navigate(['/resume']);
+      },
+      error: (err) => {
+        console.error('Registration failed:', err.error.error);
+        this.registerError = err.error.error || 'Registration failed. Please try again.';
+        console.log('setting registerError', this.registerError);
+      }
+    });
   }
 
   isLoginValid(): boolean {
@@ -55,6 +79,6 @@ export class LoginComponent {
            this.registerData.lastName.trim() !== '' &&
            this.registerData.email.trim() !== '' &&
            this.registerData.password.trim() !== '' &&
-           this.registerData.password === this.registerData.confirmPassword;
+           this.registerData.password === this.confirmPassword;
   }
 }

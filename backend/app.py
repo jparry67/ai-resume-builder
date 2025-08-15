@@ -1,7 +1,15 @@
 from flask import Flask, jsonify, send_from_directory, request
 import os
+from auth import auth_bp, login_manager
 
 app = Flask(__name__, static_folder='static')
+
+# Configure Flask-Login
+app.secret_key = 'your-secret-key-here'  # In production, use a secure random key
+login_manager.init_app(app)
+
+# Register the authentication blueprint
+app.register_blueprint(auth_bp)
 
 @app.route('/api/hello', methods=['GET'])
 def hello_world():

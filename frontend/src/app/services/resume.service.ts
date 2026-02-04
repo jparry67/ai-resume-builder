@@ -52,7 +52,7 @@ export interface ResumeVersionData {
 
 const dummyResumeData1: ResumeData = {
   id: '123',
-  fileName: 'Jacob_Parry_Resume_8_12_2025',
+  fileName: 'Jacob_Parry_Resume_2_3_2026',
   personalInfo: {
     name: 'Jacob Parry',
     summary: 'Experienced Full-Stack Engineer with a Dedicated Focus on Security',
@@ -62,7 +62,7 @@ const dummyResumeData1: ResumeData = {
     linkedinLink: 'linkedin.com/in/jacob-parry',
   },
   templateConfig: {
-    baseFontSize: 12,
+    baseFontSize: 13,
   },
   resumeSections: [
     {
@@ -77,12 +77,13 @@ const dummyResumeData1: ResumeData = {
               title: 'Software Engineer, Secure Devices',
               dates: 'July 2025 - Present',
               bullets: [
-                'Partnered with security teams (Cloud, AppSec, etc.) to build key features that enhance vulnerability tracking and management',
-                'Developed weekly executive reports on key vulnerabilities and mitigation, providing company-wide risk visibility',
-                'Built a NIST categorization system via LLM, providing a detailed breakdown for understanding and prioritization',
-                'Automated regular security exception reviews, ensuring compliance and reducing manual effort for security engineers',
+                'Reducing endpoint vulnerable surface area by implementing role-based restrictions on browsers and terminals',
+                'Managing high-stakes internal communications to balance security hardening with employee productivity',
+                'Engineering high-performance native macOS software for security telemetry and malware detection',
+                'Developing major DLP features for a proprietary security-monitoring Chrome extension, guiding users to secure "paved paths"',
+                'Led cross-functional effort to audit Google Workspace security settings and automate DLP alerting pipelines',
               ],
-              bolded: ['Ruby, React', 'OffSec OSCC Certificaton In Progress'],
+              bolded: ['JavaScript, TypeScript, Go', 'OSCC (OffSec CyberCore) Certificaton'],
             },
             {
               title: 'Full-Stack Software Engineer, Vulnerability Management',
@@ -178,7 +179,7 @@ const dummyResumeData1: ResumeData = {
         '<b>Back End Frameworks</b>: NestJS, Express',
         '<b>Databases</b>: MySQL, AWS RDS, MongoDB, AWS DynamoDB',
         '<b>Cloud Platforms</b>: AWS, Firebase',
-        '<b>Security Certifications</b>: OffSec OSCC (In Progress)',
+        '<b>Security Certifications</b>: OSCC (OffSec CyberCore) Certificaton',
       ],
     },
   ],
